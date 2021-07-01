@@ -18,6 +18,7 @@ type SearchProps = {
     keyword: string;
     isMaxMobileResolution: boolean;
     isDarkMode: boolean;
+    isPublicSiteOpen: boolean;
     optionSelected: (pageid: string) => void;
     onChange: (e: React.FormEvent<HTMLInputElement>) => void;
     updateKeyword: Function;
@@ -156,13 +157,15 @@ const Search: React.FC<SearchProps> = (props) => {
 
     return (
         <div
-            className={`searchWrapper ${props.leftNavOpen ? 'visHidden' : ''}`}
+            className={`searchWrapper ${props.leftNavOpen ? 'visHidden' : ''} ${
+                !props.isPublicSiteOpen ? 'topPositioned' : ''
+            }`}
         >
             <div className="searchInputWrapper">
                 <div className="searchInputContainer">
                     <IconContext.Provider
                         value={{
-                            className: `icon searchIcon`,
+                            className: 'icon searchIcon',
                         }}
                     >
                         <BiSearch />
